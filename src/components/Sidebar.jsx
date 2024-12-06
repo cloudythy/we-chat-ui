@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import { useChatStore } from "../store/useChatStore.js";
 import { useAuthStore } from "../store/useAuthStore.js";
 import SidebarSkeleton from "./skeletons/SidebarSkeleton.jsx";
-import { Users } from "lucide-react";
+import {Search, User, Users} from "lucide-react";
 
 const Sidebar = () => {
   const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore();
   const { onlineUsers } = useAuthStore();
 
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
-  const [activeTab, setActiveTab] = useState("all"); // Tab state: "all" or "waiting"
+  const [activeTab, setActiveTab] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     getUsers();
@@ -19,9 +20,37 @@ const Sidebar = () => {
 
   return (
       <aside className="h-full w-20 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
+        <div className="p-5 pb-1">
+          <div className="flex items-center gap-2">
+            {/* Search Bar */}
+            <div className="flex-1 flex items-center bg-base-200 p-2 rounded-lg">
+              <Search className="text-primary"/>
+              <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="bg-transparent outline-none text-sm w-full pl-2"
+              />
+            </div>
+
+            {/* Buttons */}
+            <button
+                className="w-8 h-8 rounded-full bg-base-200 flex items-center justify-center hover:bg-base-300 transition"
+            >
+              <User className="text-primary w-5 h-5"/>
+            </button>
+            <button
+                className="w-8 h-8 rounded-full bg-base-200 flex items-center justify-center hover:bg-base-300 transition"
+            >
+              <Users className="text-primary w-5 h-5"/>
+            </button>
+          </div>
+        </div>
+
         <div className="border-b border-base-300 w-full p-5">
           <div className="flex items-center gap-2">
-            <Users className="size-6" />
+            <Users className="size-6"/>
             <span className="font-medium hidden lg:block">Contacts</span>
           </div>
 

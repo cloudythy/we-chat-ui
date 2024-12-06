@@ -15,14 +15,6 @@ const Sidebar = () => {
     getUsers();
   }, [getUsers]);
 
-  const filteredUsers = showOnlineOnly
-      ? users.filter((user) => onlineUsers.includes(user._id))
-      : users;
-
-  const waitingUsers = users.filter((user) => user.hasUnreadMessages); // Replace with your own logic
-
-  const displayedUsers = activeTab === "all" ? filteredUsers : waitingUsers;
-
   if (isUsersLoading) return <SidebarSkeleton />;
 
   return (
@@ -68,7 +60,7 @@ const Sidebar = () => {
 
         {/* User List */}
         <div className="overflow-y-auto w-full py-3">
-          {displayedUsers.map((user) => (
+          {users.map((user) => (
               <button
                   key={user._id}
                   onClick={() => setSelectedUser(user)}
@@ -102,7 +94,7 @@ const Sidebar = () => {
               </button>
           ))}
 
-          {displayedUsers.length === 0 && (
+          {users.length === 0 && (
               <div className="text-center text-zinc-500 py-4">No users to display</div>
           )}
         </div>

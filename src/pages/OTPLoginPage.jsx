@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import OTPVerification from "../components/OTPVerification.jsx";
 
 
-const ForgotPasswordPage = () => {
+const OTPLoginPage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isOTPRequested, setIsOTPRequested] = useState(false);
 
@@ -45,4 +45,4 @@ const ForgotPasswordPage = () => {
   );
 };
 
-export default ForgotPasswordPage;
+export default OTPLoginPage;

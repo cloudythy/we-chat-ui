@@ -25,7 +25,7 @@ const OTPLoginPage = () => {
     <div className="min-h-screen flex flex-col items-center justify-center p-6">
       {!isOTPRequested ? (
         <div className="w-full max-w-sm space-y-4">
-          <h1 className="text-2xl font-bold">Forgot Password</h1>
+          <h1 className="text-2xl font-bold">Login with OTP</h1>
           <p>Please enter your phone number to receive OTP code.</p>
           <input
             type="text"

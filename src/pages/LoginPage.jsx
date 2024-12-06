@@ -88,7 +88,7 @@ const LoginPage = () => {
                 {/* Forgot Password Link */}
                 <div className="mt-2 text-right">
                   <Link to="/otp-login" className="mt-2 text-right link link-primary">
-                  Forgot Password?
+                  Login with OTP
                   </Link>
                   
                 </div>

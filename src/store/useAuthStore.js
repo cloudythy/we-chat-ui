@@ -82,6 +82,26 @@ export const useAuthStore = create((set, get) => ({
     }
   },
 
+  requestOTP: async (data) => {
+    try {
+      await axiosInstance.post("/api/v1/auth/request-otp", data);
+      toast.success("OTP đã được gửi!");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Lỗi khi gửi OTP.");
+    }
+  },
+  
+  verifyOTP: async (data) => {
+    try {
+      const res = await axiosInstance.post("/api/v1/auth/verify-otp", data);
+      toast.success("Xác nhận OTP thành công!");
+      return res.data;
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Lỗi khi xác nhận OTP.");
+      throw error;
+    }
+  },
+
   connectSocket: () => {
     const { authUser } = get();
     if (!authUser || get().socket?.connected) return;

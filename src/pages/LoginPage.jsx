@@ -87,13 +87,10 @@ const LoginPage = () => {
                 </div>
                 {/* Forgot Password Link */}
                 <div className="mt-2 text-right">
-                  <button
-                      type="button"
-                      className="link link-primary text-sm"
-                      onClick={() => {} /* Add logic for forgot password later */}
-                  >
-                    Forgot Password?
-                  </button>
+                  <Link to="/forgot-password" className="mt-2 text-right link link-primary">
+                  Forgot Password?
+                  </Link>
+                  
                 </div>
               </div>
 

@@ -3,6 +3,7 @@ import { useChatStore } from "../store/useChatStore.js";
 import { useAuthStore } from "../store/useAuthStore.js";
 import SidebarSkeleton from "./skeletons/SidebarSkeleton.jsx";
 import {Search, User, Users} from "lucide-react";
+import {AddFriendModal} from "./AddFriendModal.jsx";
 
 const Sidebar = () => {
   const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore();
@@ -85,6 +86,7 @@ const Sidebar = () => {
           >
             Waiting
           </button>
+          <AddFriendModal/>
         </div>
 
         {/* User List */}
